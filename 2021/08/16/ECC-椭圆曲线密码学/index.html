@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816152330339.png">
 <meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816152450571.png">
 <meta property="article:published_time" content="2021-08-16T05:42:14.000Z">
-<meta property="article:modified_time" content="2021-08-16T11:48:58.572Z">
+<meta property="article:modified_time" content="2021-08-16T13:00:37.933Z">
 <meta property="article:author" content="Jens">
 <meta property="article:tag" content="密码学">
 <meta property="article:tag" content="ECC">
@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-16 13:42:14 / Modified: 19:48:58" itemprop="dateCreated datePublished" datetime="2021-08-16T13:42:14+08:00">2021-08-16</time>
+              <time title="Created: 2021-08-16 13:42:14 / Modified: 21:00:37" itemprop="dateCreated datePublished" datetime="2021-08-16T13:42:14+08:00">2021-08-16</time>
             </span>
 
           
@@ -257,14 +257,7 @@
 <p>假设 P 的坐标为$(x_P, y_P)$，那么 P 的负元为 $-P（P + (-P) = 0）$，-P 的坐标为$(x_P,-y_P)$。但是，$-y_P$ 对 p 取模后，就变为 $p - y_P$。也就是说，-P 的坐标为$(x_P,p - y_P)$。</p>
 <p>比如，p = 23，P = (13, 7)，那么 -P = (13, 16)。</p>
 <p>（3）重点来了，加法的定义。假设$ R = P + Q$，同时假设 P、Q、R 的坐标分别为：$(x_P,y_P)、(x_Q,y_Q)、(x_R,y_R)$，并且 P != -Q，那么<br>$$<br>\begin{aligned}<br>{ x _ R } = ( \lambda ^ 2 - x_P - x_Q) \mod p \<br>{ y_R } = (-y_P + \lambda(x_P - x_R)) \mod p<br>\end{aligned}<br>$$<br>其中，<br>$$<br>\begin{aligned}<br>\lambda &amp;= [(y_Q - y_P)/(x_Q - x_P)] \mod p, if \quad P \ne Q \<br>\lambda &amp;= [(3{x_P}^2 + a)/(2y_P)] \mod p, if \quad P = Q<br>\end{aligned}<br>$$<br>（4）乘法定义为重复相加，比如 nP = P + … + P（n 个 P 相加）。注意，这重复相加的背后，仍然存在对 p 的取模运算。</p>
-<p>需要强调的是，以上的定义（3）中，计算λ时涉及到了 GF(p) 的乘法逆元，我们举一个例子。假设：P = (3,10)，Q = (9,7)，p = 23，那么<br>$$<br>\begin{aligned}<br>\lambda &amp;= [(y_Q - y_P)/(x_Q - x_P)] \mod p \</p>
-<pre><code>      &amp;= [(7 - 10)/(9 - 3)] \mod 23 \\
-
-      &amp;= [-3/6] \mod 23 \\
-
-      &amp;= 11
-</code></pre>
-<p>  \end{aligned}<br>$$</p>
+<p>需要强调的是，以上的定义（3）中，计算λ时涉及到了 GF(p) 的乘法逆元，我们举一个例子。假设：P = (3,10)，Q = (9,7)，p = 23，那么<br>$$<br>\begin{aligned}<br>\lambda &amp;= [(y_Q - y_P)/(x_Q - x_P)] \mod p \<br>          &amp;= [(7 - 10)/(9 - 3)] \mod 23 \<br>          &amp;= [-3/6] \mod 23 \<br>          &amp;= 11<br>\end{aligned}<br>$$</p>
 
     </div>
 
@@ -457,6 +450,43 @@
 
 <script>
   if (typeof MathJax === 'undefined') {
+    // window.MathJax = {
+    //   loader: {
+    //
+    //     source: {
+    //       '[tex]/amsCd': '[tex]/amscd',
+    //       '[tex]/AMScd': '[tex]/amscd'
+    //     }
+    //   },
+    //   tex: {
+    //     inlineMath: {'[+]': [['$', '$']]},
+    //
+    //     tags: 'ams'
+    //   },
+    //   options: {
+    //     renderActions: {
+    //       findScript: [10, doc => {
+    //         document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+    //           const display = !!node.type.match(/; *mode=display/);
+    //           const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+    //           const text = document.createTextNode('');
+    //           node.parentNode.replaceChild(text, node);
+    //           math.start = {node: text, delim: '', n: 0};
+    //           math.end = {node: text, delim: '', n: 0};
+    //           doc.math.push(math);
+    //         });
+    //       }, '', false],
+    //       insertedScript: [200, () => {
+    //         document.querySelectorAll('mjx-container').forEach(node => {
+    //           let target = node.parentNode;
+    //           if (target.nodeName.toLowerCase() === 'li') {
+    //             target.parentNode.classList.add('has-jax');
+    //           }
+    //         });
+    //       }, '', false]
+    //     }
+    //   }
+    // };
     window.MathJax = {
       tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
