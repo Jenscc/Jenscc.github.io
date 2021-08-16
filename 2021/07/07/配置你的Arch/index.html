@@ -198,15 +198,11 @@
         <p>Arch配置好archlinuxcn和aur以后，基本可以满足大部分日常软件的需求，但是呢，如果想用Arch替代Kali，那么还需要添加blackarch。</p>
 <p>我会简述一下如何添加blackarch并推荐一些常用软件。</p>
 <span id="more"></span>
-
 <h3 id="添加blackarch源"><a href="#添加blackarch源" class="headerlink" title="添加blackarch源"></a>添加blackarch源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
-
 <p>在配置文件末尾加入以下内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[blackarch]</span><br><span class="line">SigLevel = Optional TrustAll</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/blackarch/$repo/os/$arch</span><br></pre></td></tr></table></figure>
-
 <p>然后更新一下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yay -Syyu</span><br></pre></td></tr></table></figure>
-
 <p>如果没什么问题，那么便添加成功了</p>
 <h3 id="常用软件推荐"><a href="#常用软件推荐" class="headerlink" title="常用软件推荐"></a>常用软件推荐</h3><h4 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h4><p>一般来说，我会推荐<code>Chrome</code>，当然<code>firefox</code>也可以，至于<code>edge</code>，因为我一直使用chrome，通过Google帐号和我的Windows做同步，所以没有使用过，也懒得切换；<code>Chromium</code>被Google打压了，使用不便。</p>
 <h4 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h4><p>我使用的是<code>fcitx5</code>+<code>Rime</code>，自己配置词库，加肥猫词库和萌娘词库，主要是为了方便使用emoji、数学符号、希腊字母，如果没有这方面的需求，<code>fcitx5-chinese-addons</code>就十分好用了</p>

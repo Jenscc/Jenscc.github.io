@@ -202,38 +202,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>​    在阅读了<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAwNDAxOTM5Mw==&action=getalbum&album_id=1337011624133312513&scene=173&from_msgid=2655966885&from_itemidx=1&count=3&nolastread=1#wechat_redirect">网事如烟云</a>的密码学专栏后，想要做个md版的留档。</p>
+        <p>​    在阅读了<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAwNDAxOTM5Mw==&amp;action=getalbum&amp;album_id=1337011624133312513&amp;scene=173&amp;from_msgid=2655966885&amp;from_itemidx=1&amp;count=3&amp;nolastread=1#wechat_redirect">网事如烟云</a>的密码学专栏后，想要做个md版的留档。</p>
 <span id="more"></span>
-
 <p>​    椭圆曲线密码学（Elliptic curve cryptography，ECC），是一种公钥密码学机制。公钥密码学，都是建立在数学“难题”的基础上，ECC 的数学难题是类似因式分解或者求解离散对数这样的问题。</p>
 <h3 id="椭圆曲线概念"><a href="#椭圆曲线概念" class="headerlink" title="椭圆曲线概念"></a>椭圆曲线概念</h3><p>​    椭圆是曲线，椭圆曲线却不是椭圆，如图1所示。 </p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816140006457.png" alt="椭圆与椭圆曲线"></p>
 <p>​    图1-A 是椭圆，而图1-B、图1-C 是椭圆曲线。从形状上来看，两者相差巨大，而且从函数解析式的角度来看，两者也是相差巨大。</p>
-<p>​    椭圆（Ellipse）的解析式为：<br>$$<br>\frac{ x ^ 2}{ a } + \frac{y ^ 2}{ b } = 1 \qquad —— (1)<br>$$<br>​    椭圆曲线（Elliptic Curve）的解析式为：<br>$$<br>{ y ^ 2 } + { a _ 1 } x y + { a _ 3 } y = {x ^ 3} +  { a _ 2 } { x ^ 2 } + { a _ 4 } x + { a _ 6 } \qquad —— (2)<br>$$<br>但是，为什么要将解析式(2)命名为椭圆曲线呢？这确实与椭圆有点关系，不过这个话题如果展开的话，那又是一个长篇大论，而且与本文主题无关。这里我们只须简单了解，在计算椭圆积分时，出现了形似(2)的解析式，所以将该方程式命名为“椭圆曲线”。</p>
+<p>​    椭圆（Ellipse）的解析式为：</p>
+<script type="math/tex; mode=display">
+\frac{ x ^ 2}{ a } + \frac{y ^ 2}{ b } = 1 \qquad ------ (1)</script><p>​    椭圆曲线（Elliptic Curve）的解析式为：</p>
+<script type="math/tex; mode=display">
+{ y ^ 2 } + { a _ 1 } x y + { a _ 3 } y = {x ^ 3} +  { a _ 2 } { x ^ 2 } + { a _ 4 } x + { a _ 6 } \qquad ------ (2)</script><p>但是，为什么要将解析式(2)命名为椭圆曲线呢？这确实与椭圆有点关系，不过这个话题如果展开的话，那又是一个长篇大论，而且与本文主题无关。这里我们只须简单了解，在计算椭圆积分时，出现了形似(2)的解析式，所以将该方程式命名为“椭圆曲线”。</p>
 <p>椭圆曲线更精确的定义，是指满足解析式(2)的所有点的集合，同时这些点必须是非奇异的（也就是光滑的）。</p>
-<p>椭圆曲线密码学（Elliptic curve cryptography，ECC）所涉及的椭圆曲线，其形式更简单一些：<br>$$<br>{ y ^ 2 } = {x ^ 3} + { a _ 4 } x + { a _ 6 } \qquad —— (3)<br>$$<br>或者更清晰地表达为：<br>$$<br>{ y ^ 2 } = {x ^ 3} + { a } x + { b } \qquad —— (4)<br>$$<br>同时，由于椭圆曲线必须是光滑的，这个与三次方程的判别式等价。对于方程：<br>$$<br>{ 0 } = {x ^ 3} + { a } x + { b } \qquad —— (5)<br>$$<br>其判别式为：<br>$$<br>\Delta = 4 { a ^ 3 } + 27 { b ^ 2 }<br>$$<br>如果椭圆曲线(4)光滑，则必须 ∆ != 0，也就是说，<br>$$<br>4 { a ^ 3 } + 27 { b ^ 2 } \ne 0<br>$$<br>如果不满足此条件，则相应的曲线就不光滑，从而也就不是椭圆曲线，如图2所示。</p>
+<p>椭圆曲线密码学（Elliptic curve cryptography，ECC）所涉及的椭圆曲线，其形式更简单一些：</p>
+<script type="math/tex; mode=display">
+{ y ^ 2 } = {x ^ 3} + { a _ 4 } x + { a _ 6 } \qquad ------ (3)</script><p>或者更清晰地表达为：</p>
+<script type="math/tex; mode=display">
+{ y ^ 2 } = {x ^ 3} + { a } x + { b } \qquad ------ (4)</script><p>同时，由于椭圆曲线必须是光滑的，这个与三次方程的判别式等价。对于方程：</p>
+<script type="math/tex; mode=display">
+{ 0 } = {x ^ 3} + { a } x + { b } \qquad ------ (5)</script><p>其判别式为：</p>
+<script type="math/tex; mode=display">
+\Delta = 4 { a ^ 3 } + 27 { b ^ 2 }</script><p>如果椭圆曲线(4)光滑，则必须 ∆ != 0，也就是说，</p>
+<script type="math/tex; mode=display">
+4 { a ^ 3 } + 27 { b ^ 2 } \ne 0</script><p>如果不满足此条件，则相应的曲线就不光滑，从而也就不是椭圆曲线，如图2所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816142754558.png" alt="非光滑的曲线"></p>
-<p>另外，椭圆曲线的定义，还包括一个无穷远点（∞）——也记为零点O（大写的“O”），这也可以想象。对于${ y ^ 2 } = {x ^ 3} + { a } x + { b }$，我们有：<br>$$<br>y = ( {x^3} + ax + b)^{1/2}<br>$$<br>显然，x 为无穷大时，y 也为无穷大，虽然这种表述在数学上是不严谨的。不过 O 在 ECC 的加法定义中起到了举足轻重的作用，这一点我们会在后面的内容中看到。</p>
+<p>另外，椭圆曲线的定义，还包括一个无穷远点（∞）——也记为零点O（大写的“O”），这也可以想象。对于${ y ^ 2 } = {x ^ 3} + { a } x + { b }$，我们有：</p>
+<script type="math/tex; mode=display">
+y = ( {x^3} + ax + b)^{1/2}</script><p>显然，x 为无穷大时，y 也为无穷大，虽然这种表述在数学上是不严谨的。不过 O 在 ECC 的加法定义中起到了举足轻重的作用，这一点我们会在后面的内容中看到。</p>
 <p>总之，ECC 所涉及的椭圆曲线，其含义为：</p>
 <p>（1）满足如下条件的曲线上所有的点：${ y ^ 2 } = {x ^ 3} + { a } x + { b }$，$4 { a ^ 3 } + 27 { b ^ 2 } \ne0$</p>
 <p>（2）再加上一个 O 点</p>
 <p>最后，需要强调的是，虽然，${ y ^ 2 } = {x ^ 3} + { a } x + { b }$是一个 X 轴对称的函数。但是，这只是 ECC 所采用的椭圆函数解析式，并不是说所有的椭圆曲线都是 X 轴对称的，如图3所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816143311509.png" alt="非X轴对称的椭圆曲线"></p>
 <p>我们只须意识到图3是一个非 X 轴对称的图形即可，其他的也不必太多关注，毕竟我们关心的是 ECC 所采取的椭圆曲线：${ y ^ 2 } = {x ^ 3} + { a } x + { b }$，而它正好是 X 轴对称函数。为什么如此强调 X 轴对称呢？这与 ECC 所定义的加法运算有关。</p>
-<h3 id="ECC-的加法及阿贝尔群"><a href="#ECC-的加法及阿贝尔群" class="headerlink" title="ECC 的加法及阿贝尔群"></a>ECC 的加法及阿贝尔群</h3><p>ECC 关于加法的定义，就是针对阿贝尔群的——使它的加法运算，满足阿贝尔群的要求。所以，ECC 需要首先定义加法单位元。ECC 定义其椭圆曲线中的元素 O（无穷远点），就是加法单位元。这也就意味着，<br>$$<br>O = - O<br>$$<br>同时，ECC 定义其集合中的元素就是其椭圆曲线上的点（当然也包括 O），如图4所示。</p>
+<h3 id="ECC-的加法及阿贝尔群"><a href="#ECC-的加法及阿贝尔群" class="headerlink" title="ECC 的加法及阿贝尔群"></a>ECC 的加法及阿贝尔群</h3><p>ECC 关于加法的定义，就是针对阿贝尔群的——使它的加法运算，满足阿贝尔群的要求。所以，ECC 需要首先定义加法单位元。ECC 定义其椭圆曲线中的元素 O（无穷远点），就是加法单位元。这也就意味着，</p>
+<script type="math/tex; mode=display">
+O = - O</script><p>同时，ECC 定义其集合中的元素就是其椭圆曲线上的点（当然也包括 O），如图4所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816143723406.png" alt="ECC加法中的元素"></p>
 <p>图4中，椭圆曲线${ y ^ 2 } = {x ^ 3} + { a } x + { b }$（记为 E(a, b)，或者简记为 E）上点 P，就是 ECC 加法中的元素。</p>
-<p>考虑到加法单位元，显然有，<br>$$<br>P + O = P<br>$$<br>ECC 中关于点 P 的负元的定义是：P 关于 X 轴的对称点，即假设 P 的坐标为(x, y)，那么 P 的负元 Q 的坐标为(x, -y)，如图5所示。</p>
+<p>考虑到加法单位元，显然有，</p>
+<script type="math/tex; mode=display">
+P + O = P</script><p>ECC 中关于点 P 的负元的定义是：P 关于 X 轴的对称点，即假设 P 的坐标为(x, y)，那么 P 的负元 Q 的坐标为(x, -y)，如图5所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816143858840.png" alt="ECC加法中的负元"></p>
-<p>图5中，Q 是 P 的负元，也即，<br>$$<br>Q = - P<br>$$<br>根据加法单位元的定义，显然有，<br>$$<br>P + Q = P + (-P) = O<br>$$<br>有了这些铺垫以后，就可以定义 ECC 的加法了，如图6所示。</p>
+<p>图5中，Q 是 P 的负元，也即，</p>
+<script type="math/tex; mode=display">
+Q = - P</script><p>根据加法单位元的定义，显然有，</p>
+<script type="math/tex; mode=display">
+P + Q = P + (-P) = O</script><p>有了这些铺垫以后，就可以定义 ECC 的加法了，如图6所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816144013139.png" alt="ECC 加法定义示意"></p>
-<p>图6中，选取椭圆曲线 E(a, b)上的两点 P、Q，做一条直线（记为 L），L 与 E 相交于点 R’，做点 R’的 X 轴对称点 R，则 ECC 关于加法的定义为：<br>$$<br>R’ = -R \<br>R + R’ = O<br>$$<br>所以，<br>$$<br>P + Q + R’ = O<br>$$<br>也就是说，一根直线与 ECC 的椭圆曲线相交于3个点，则3个点之和为 O。</p>
+<p>图6中，选取椭圆曲线 E(a, b)上的两点 P、Q，做一条直线（记为 L），L 与 E 相交于点 R’，做点 R’的 X 轴对称点 R，则 ECC 关于加法的定义为：</p>
+<script type="math/tex; mode=display">
+R' = -R \\
+R + R' = O</script><p>所以，</p>
+<script type="math/tex; mode=display">
+P + Q + R' = O</script><p>也就是说，一根直线与 ECC 的椭圆曲线相交于3个点，则3个点之和为 O。</p>
 <p>我们再考虑一种特殊情形，如图7所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816150354025.png" alt="直线与椭圆曲线相切"></p>
-<p>图7与图6相比，没有本质区别，只不过直线 L 与椭圆曲线 E(a, b) 相切而已。根据 ECC 加法的定义，我们有：<br>$$<br>P + P = 2 P = R<br>$$<br>另外，为了满足阿贝尔群的定义，ECC 加法还定义了结合律和交换律：<br>$$<br>A + B + C = A + (B + C)    —-结合律 \<br>A + B = B + A    —-交换律<br>$$<br>至此，ECC 关于加法的定义，就完全满足阿贝尔群的定义。</p>
+<p>图7与图6相比，没有本质区别，只不过直线 L 与椭圆曲线 E(a, b) 相切而已。根据 ECC 加法的定义，我们有：</p>
+<script type="math/tex; mode=display">
+P + P = 2 P = R</script><p>另外，为了满足阿贝尔群的定义，ECC 加法还定义了结合律和交换律：</p>
+<script type="math/tex; mode=display">
+A + B + C = A + (B + C)    ----结合律 \\
+A + B = B + A    ----交换律</script><p>至此，ECC 关于加法的定义，就完全满足阿贝尔群的定义。</p>
 <h3 id="ECC在GF-p-上的计算"><a href="#ECC在GF-p-上的计算" class="headerlink" title="ECC在GF(p)上的计算"></a>ECC在GF(p)上的计算</h3><p>可以想象，椭圆曲线最终要跟伽罗瓦域挂钩，才能构建出 ECC 大厦。伽罗瓦域分为 $GF(p)$ 和 $GF(p^n)$，ECC 涉及到了$ GF(p)$ 和 $GF(2n)$。此处先介绍椭圆曲线在 $GF(p)$​ 上的计算。</p>
-<p>ECC 在 $GF(p)$ 上的计算，所采用的椭圆曲线方程需要做一个小小的变换，为：<br>$$<br>{y^2} \mod p = ( {x^3} + ax + b ) \mod p<br>$$<br>同时，<br>$$<br>( 4 { a ^ 3 } + 27 { b ^ 2 } ) \mod p \ne 0<br>$$<br>其中，x,y,a,b 的取值都属于集合${Z_p} = { 0, 1, \dots, p-1 }$，并且p是素数。这样的椭圆曲线也称为素曲线（prime curve），并记为${ E_p } (a, b)$</p>
-<p>我们来看一个具体的例子，假设 $p = 23，a = 1， b = 1$，即：<br>$$<br>{y ^ 2} \mod 23 = ( {x^3} + x + 1 ) \mod 23<br>$$<br>如果 x 从0取值到22，则 y 的取值如表1所示。</p>
+<p>ECC 在 $GF(p)$ 上的计算，所采用的椭圆曲线方程需要做一个小小的变换，为：</p>
+<script type="math/tex; mode=display">
+{y^2} \mod p = ( {x^3} + ax + b ) \mod p</script><p>同时，</p>
+<script type="math/tex; mode=display">
+( 4 { a ^ 3 } + 27 { b ^ 2 } ) \mod p \ne 0</script><p>其中，x,y,a,b 的取值都属于集合${Z_p} = { 0, 1, \dots, p-1 }$，并且p是素数。这样的椭圆曲线也称为素曲线（prime curve），并记为${ E_p } (a, b)$</p>
+<p>我们来看一个具体的例子，假设 $p = 23，a = 1， b = 1$，即：</p>
+<script type="math/tex; mode=display">
+{y ^ 2} \mod 23 = ( {x^3} + x + 1 ) \mod 23</script><p>如果 x 从0取值到22，则 y 的取值如表1所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816151419932.png" alt="image-20210816151419932"></p>
 <p>表1的计算，需要说明一下。我们以 $x = 7$ 为例，进行说明。</p>
 <p>(1)计算$ f(7)={x^3}+ x + 1 = { 7  ^ 3 } + 7 + 1 = 351$</p>
@@ -252,13 +291,41 @@
 <p>不过，这并不是重点。现在有一个非常关键的问题，椭圆曲线对一个素数 p 取模后，它原来的加法定义还能适用吗？我们先回归一下未取模之前的椭圆曲线的加法定义，如图2所示。</p>
 <p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210816152450571.png" alt="image-20210816152450571"></p>
 <p>图2中，$R = P + Q$。我们假设 P、Q、R 的坐标分别为：$(x_P,y_P)、(x_Q,y_Q)、(x_R,y_R)$​。</p>
-<p>则直线 PQ 的方程为：<br>$$<br>y = [(y_Q - y_P)/(x_Q - x_P)]x + [(x_Q - x_P)y_Q - (y_Q - y_P)x_Q]<br>$$<br>此方程与椭圆曲线方程$（y^2 = x^3 + ax + b）$联合可解得：<br>$$<br>\begin{aligned}<br>{ x_R } &amp;= { \lambda ^ 2 + x_P + x_Q } \<br>{ y_R } &amp;= { -y_P + \lambda(x_P - x _R)}<br>\end{aligned}<br>$$<br>其中，<br>$$<br>\lambda = (y_Q - y_P)/(x_Q - x_P)<br>$$<br>现在椭圆曲线对素数p取模后，ECC 的加法该如何定义呢？总的来说，其定义的精髓未变，只是叠加上取模运算而已。</p>
-<p>（1）加法单位元，仍然是无穷远点 O<br>$$<br>P + O = P \<br>O = -O<br>$$<br>（2）元素 P 的负元的基本定义未变，只是最后取值时，需要对素数 p 取模。</p>
+<p>则直线 PQ 的方程为：</p>
+<script type="math/tex; mode=display">
+y = [(y_Q - y_P)/(x_Q - x_P)]x + [(x_Q - x_P)y_Q - (y_Q - y_P)x_Q]</script><p>此方程与椭圆曲线方程$（y^2 = x^3 + ax + b）$联合可解得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+{ x_R } &= { \lambda ^ 2 + x_P + x_Q } \\
+{ y_R } &= { -y_P + \lambda(x_P - x _R)}
+\end{aligned}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+\lambda = (y_Q - y_P)/(x_Q - x_P)</script><p>现在椭圆曲线对素数p取模后，ECC 的加法该如何定义呢？总的来说，其定义的精髓未变，只是叠加上取模运算而已。</p>
+<p>（1）加法单位元，仍然是无穷远点 O</p>
+<script type="math/tex; mode=display">
+P + O = P \\
+O = -O</script><p>（2）元素 P 的负元的基本定义未变，只是最后取值时，需要对素数 p 取模。</p>
 <p>假设 P 的坐标为$(x_P, y_P)$，那么 P 的负元为 $-P（P + (-P) = 0）$，-P 的坐标为$(x_P,-y_P)$。但是，$-y_P$ 对 p 取模后，就变为 $p - y_P$。也就是说，-P 的坐标为$(x_P,p - y_P)$。</p>
 <p>比如，p = 23，P = (13, 7)，那么 -P = (13, 16)。</p>
-<p>（3）重点来了，加法的定义。假设$ R = P + Q$，同时假设 P、Q、R 的坐标分别为：$(x_P,y_P)、(x_Q,y_Q)、(x_R,y_R)$，并且 P != -Q，那么<br>$$<br>\begin{aligned}<br>{ x _ R } = ( \lambda ^ 2 - x_P - x_Q) \mod p \<br>{ y_R } = (-y_P + \lambda(x_P - x_R)) \mod p<br>\end{aligned}<br>$$<br>其中，<br>$$<br>\begin{aligned}<br>\lambda &amp;= [(y_Q - y_P)/(x_Q - x_P)] \mod p, if \quad P \ne Q \<br>\lambda &amp;= [(3{x_P}^2 + a)/(2y_P)] \mod p, if \quad P = Q<br>\end{aligned}<br>$$<br>（4）乘法定义为重复相加，比如 nP = P + … + P（n 个 P 相加）。注意，这重复相加的背后，仍然存在对 p 的取模运算。</p>
-<p>需要强调的是，以上的定义（3）中，计算λ时涉及到了 GF(p) 的乘法逆元，我们举一个例子。假设：P = (3,10)，Q = (9,7)，p = 23，那么<br>$$<br>\begin{aligned}<br>\lambda &amp;= [(y_Q - y_P)/(x_Q - x_P)] \mod p \<br>&amp;= [(7 - 10)/(9 - 3)] \mod 23 \<br>&amp;= [-3/6] \mod 23 \<br>&amp;= 11<br>\end{aligned}<br>$$</p>
-
+<p>（3）重点来了，加法的定义。假设$ R = P + Q$，同时假设 P、Q、R 的坐标分别为：$(x_P,y_P)、(x_Q,y_Q)、(x_R,y_R)$，并且 P != -Q，那么</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+{ x _ R } = ( \lambda ^ 2 - x_P - x_Q) \mod p \\ 
+{ y_R } = (-y_P + \lambda(x_P - x_R)) \mod p
+\end{aligned}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\lambda &= [(y_Q - y_P)/(x_Q - x_P)] \mod p, if \quad P \ne Q \\
+\lambda &= [(3{x_P}^2 + a)/(2y_P)] \mod p, if \quad P = Q
+\end{aligned}</script><p>（4）乘法定义为重复相加，比如 nP = P + … + P（n 个 P 相加）。注意，这重复相加的背后，仍然存在对 p 的取模运算。</p>
+<p>需要强调的是，以上的定义（3）中，计算λ时涉及到了 GF(p) 的乘法逆元，我们举一个例子。假设：P = (3,10)，Q = (9,7)，p = 23，那么</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\lambda &= [(y_Q - y_P)/(x_Q - x_P)] \mod p \\
+&= [(7 - 10)/(9 - 3)] \mod 23 \\
+&= [-3/6] \mod 23 \\
+&= 11
+\end{aligned}</script>
     </div>
 
     
