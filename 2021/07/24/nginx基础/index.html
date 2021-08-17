@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"jenscc.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Nginx1.安装哪个版本？nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。">
+  <meta name="description" content="1.安装哪个版本？nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx基础">
 <meta property="og:url" content="https://jenscc.me/2021/07/24/nginx%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Jens的博客">
-<meta property="og:description" content="Nginx1.安装哪个版本？nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。">
+<meta property="og:description" content="1.安装哪个版本？nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。">
 <meta property="og:locale">
 <meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210302091716077.png">
 <meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210302131730846.png">
 <meta property="article:published_time" content="2021-07-24T04:36:34.000Z">
-<meta property="article:modified_time" content="2021-08-16T08:00:32.027Z">
+<meta property="article:modified_time" content="2021-08-17T01:20:31.543Z">
 <meta property="article:author" content="Jens">
 <meta property="article:tag" content="archlinux">
 <meta name="twitter:card" content="summary">
@@ -184,7 +184,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-16 16:00:32" itemprop="dateModified" datetime="2021-08-16T16:00:32+08:00">2021-08-16</time>
+                <time title="Modified: 2021-08-17 09:20:31" itemprop="dateModified" datetime="2021-08-17T09:20:31+08:00">2021-08-17</time>
               </span>
 
           
@@ -198,7 +198,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="1-安装哪个版本？"><a href="#1-安装哪个版本？" class="headerlink" title="1.安装哪个版本？"></a>1.安装哪个版本？</h2><p>nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。</p>
+        <h2 id="1-安装哪个版本？"><a href="#1-安装哪个版本？" class="headerlink" title="1.安装哪个版本？"></a>1.安装哪个版本？</h2><p>nginx、openresty、tengine是三大主流，当然还有一些小众的定制，例如VeryNginx(基于openresty)，他们各有优点，但从开箱即用上来说，openresty默认带的模块最多，而且内置了lua-nginx-module以及一些lua模块，免去了给nginx添加模块的烦恼。</p>
 <span id="more"></span>
 <h4 id="为已安装好的nginx添加模块"><a href="#为已安装好的nginx添加模块" class="headerlink" title="为已安装好的nginx添加模块"></a>为已安装好的nginx添加模块</h4><p>手动安装的nginx需要在源码包手动configue以及make，在使用时可能会有额外的需求，这时可以重新编译一份nginx</p>
 <p><strong>这里以添加ssl模块为例</strong></p>
@@ -444,7 +444,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx"><span class="nav-number">1.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E5%93%AA%E4%B8%AA%E7%89%88%E6%9C%AC%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装哪个版本？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E5%B7%B2%E5%AE%89%E8%A3%85%E5%A5%BD%E7%9A%84nginx%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">为已安装好的nginx添加模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">2.配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf"><span class="nav-number">1.2.1.</span> <span class="nav-text">nginx.conf</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main-%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">main(全局模块)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#events-nginx%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">events(nginx工作模式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-http%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">http(http设置)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">3.负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E8%AF%A2"><span class="nav-number">1.3.1.</span> <span class="nav-text">轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%87%8D"><span class="nav-number">1.3.2.</span> <span class="nav-text">权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iphash"><span class="nav-number">1.3.3.</span> <span class="nav-text">iphash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.3.4.</span> <span class="nav-text">最少连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fair"><span class="nav-number">1.3.5.</span> <span class="nav-text">fair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.3.6.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%99%90%E6%B5%81"><span class="nav-number">1.4.</span> <span class="nav-text">4.限流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A4%E7%89%8C%E6%A1%B6%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.1.</span> <span class="nav-text">令牌桶算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%A1%B6%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">漏桶算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E5%B7%B2%E8%BF%87%E6%97%B6"><span class="nav-number">1.4.3.</span> <span class="nav-text">中文文档已过时</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B%EF%BC%88%E8%BF%87%E6%97%B6%EF%BC%89"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">配置示例（过时）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-zone-%E8%BF%87%E6%97%B6"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">limit_zone(过时)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-conn%EF%BC%88%E8%BF%87%E6%97%B6%EF%BC%89"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">limit_conn（过时）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8B%B1%E6%96%87%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.4.</span> <span class="nav-text">英文文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-req-module"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">limit req module</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-Configuration"><span class="nav-number">1.4.4.1.1.</span> <span class="nav-text">Example Configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-conn-module"><span class="nav-number">1.4.5.</span> <span class="nav-text">limit_conn_module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">设置白名单</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ab%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.6.</span> <span class="nav-text">ab测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.6.1.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="nav-number">1.5.</span> <span class="nav-text">5.动静分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text">6.镜像服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%83%AD%E5%A4%87%E9%83%A8%E7%BD%B2-%E5%8F%8C%E4%B8%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.7.</span> <span class="nav-text">7.热备部署 双主模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#keepalived"><span class="nav-number">1.7.1.</span> <span class="nav-text">keepalived</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx%E6%9C%8D%E5%8A%A1%E7%83%AD%E5%A4%87"><span class="nav-number">1.7.2.</span> <span class="nav-text">nginx服务热备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81-%E9%80%9A%E5%B8%B8%E4%B8%8D%E4%BC%9A%E9%9D%A2%E5%90%91%E7%94%A8%E6%88%B7"><span class="nav-number">1.8.</span> <span class="nav-text">8.安全认证(通常不会面向用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#htppasswd-%E7%94%9F%E6%88%90%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.8.1.</span> <span class="nav-text">htppasswd 生成密码文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81"><span class="nav-number">1.8.2.</span> <span class="nav-text">启用安全认证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Http-rightarrow-Https"><span class="nav-number">1.9.</span> <span class="nav-text">9. Http $\rightarrow$ Https</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E5%93%AA%E4%B8%AA%E7%89%88%E6%9C%AC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.安装哪个版本？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E5%B7%B2%E5%AE%89%E8%A3%85%E5%A5%BD%E7%9A%84nginx%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.1.</span> <span class="nav-text">为已安装好的nginx添加模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2.配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf"><span class="nav-number">2.1.</span> <span class="nav-text">nginx.conf</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main-%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.1.</span> <span class="nav-text">main(全局模块)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#events-nginx%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">events(nginx工作模式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-http%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.3.</span> <span class="nav-text">http(http设置)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">3.</span> <span class="nav-text">3.负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E8%AF%A2"><span class="nav-number">3.1.</span> <span class="nav-text">轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%87%8D"><span class="nav-number">3.2.</span> <span class="nav-text">权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iphash"><span class="nav-number">3.3.</span> <span class="nav-text">iphash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.4.</span> <span class="nav-text">最少连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fair"><span class="nav-number">3.5.</span> <span class="nav-text">fair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.6.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%99%90%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">4.限流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A4%E7%89%8C%E6%A1%B6%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">令牌桶算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%A1%B6%E7%AE%97%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">漏桶算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E5%B7%B2%E8%BF%87%E6%97%B6"><span class="nav-number">4.3.</span> <span class="nav-text">中文文档已过时</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B%EF%BC%88%E8%BF%87%E6%97%B6%EF%BC%89"><span class="nav-number">4.3.1.</span> <span class="nav-text">配置示例（过时）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-zone-%E8%BF%87%E6%97%B6"><span class="nav-number">4.3.2.</span> <span class="nav-text">limit_zone(过时)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-conn%EF%BC%88%E8%BF%87%E6%97%B6%EF%BC%89"><span class="nav-number">4.3.3.</span> <span class="nav-text">limit_conn（过时）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8B%B1%E6%96%87%E6%96%87%E6%A1%A3"><span class="nav-number">4.4.</span> <span class="nav-text">英文文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#limit-req-module"><span class="nav-number">4.4.1.</span> <span class="nav-text">limit req module</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-Configuration"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">Example Configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-conn-module"><span class="nav-number">4.5.</span> <span class="nav-text">limit_conn_module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-number">4.5.1.</span> <span class="nav-text">设置白名单</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ab%E6%B5%8B%E8%AF%95"><span class="nav-number">4.6.</span> <span class="nav-text">ab测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.6.1.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="nav-number">5.</span> <span class="nav-text">5.动静分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">6.镜像服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%83%AD%E5%A4%87%E9%83%A8%E7%BD%B2-%E5%8F%8C%E4%B8%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">7.热备部署 双主模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#keepalived"><span class="nav-number">7.1.</span> <span class="nav-text">keepalived</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx%E6%9C%8D%E5%8A%A1%E7%83%AD%E5%A4%87"><span class="nav-number">7.2.</span> <span class="nav-text">nginx服务热备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81-%E9%80%9A%E5%B8%B8%E4%B8%8D%E4%BC%9A%E9%9D%A2%E5%90%91%E7%94%A8%E6%88%B7"><span class="nav-number">8.</span> <span class="nav-text">8.安全认证(通常不会面向用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#htppasswd-%E7%94%9F%E6%88%90%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6"><span class="nav-number">8.1.</span> <span class="nav-text">htppasswd 生成密码文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81"><span class="nav-number">8.2.</span> <span class="nav-text">启用安全认证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Http-rightarrow-Https"><span class="nav-number">9.</span> <span class="nav-text">9. Http $\rightarrow$ Https</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -551,6 +551,67 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    // window.MathJax = {
+    //   loader: {
+    //
+    //     source: {
+    //       '[tex]/amsCd': '[tex]/amscd',
+    //       '[tex]/AMScd': '[tex]/amscd'
+    //     }
+    //   },
+    //   tex: {
+    //     inlineMath: {'[+]': [['$', '$']]},
+    //
+    //     tags: 'ams'
+    //   },
+    //   options: {
+    //     renderActions: {
+    //       findScript: [10, doc => {
+    //         document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+    //           const display = !!node.type.match(/; *mode=display/);
+    //           const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+    //           const text = document.createTextNode('');
+    //           node.parentNode.replaceChild(text, node);
+    //           math.start = {node: text, delim: '', n: 0};
+    //           math.end = {node: text, delim: '', n: 0};
+    //           doc.math.push(math);
+    //         });
+    //       }, '', false],
+    //       insertedScript: [200, () => {
+    //         document.querySelectorAll('mjx-container').forEach(node => {
+    //           let target = node.parentNode;
+    //           if (target.nodeName.toLowerCase() === 'li') {
+    //             target.parentNode.classList.add('has-jax');
+    //           }
+    //         });
+    //       }, '', false]
+    //     }
+    //   }
+    // };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
