@@ -20,15 +20,25 @@
     var CONFIG = {"hostname":"jenscc.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Jens的博客">
-<meta property="og:url" content="https://jenscc.me/tags/%E6%95%B0%E5%AD%A6/index.html">
+  <meta name="description" content="在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#与DLL">
+<meta property="og:url" content="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/index.html">
 <meta property="og:site_name" content="Jens的博客">
+<meta property="og:description" content="在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。">
 <meta property="og:locale">
+<meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png">
+<meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201616376.png">
+<meta property="article:published_time" content="2021-08-21T10:49:25.000Z">
+<meta property="article:modified_time" content="2021-08-23T02:59:51.292Z">
 <meta property="article:author" content="Jens">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png">
 
-<link rel="canonical" href="https://jenscc.me/tags/%E6%95%B0%E5%AD%A6/">
+<link rel="canonical" href="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/">
 
 
 <script id="page-configurations">
@@ -36,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Tag: 数学 | Jens的博客</title>
+  <title>C#与DLL | Jens的博客</title>
   
 
 
@@ -139,51 +149,102 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">数学
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/mai.jpg">
+      <meta itemprop="name" content="Jens">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jens的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#与DLL
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-21 18:49:25" itemprop="dateCreated datePublished" datetime="2021-08-21T18:49:25+08:00">2021-08-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-23 10:59:51" itemprop="dateModified" datetime="2021-08-23T10:59:51+08:00">2021-08-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <p>在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。</p>
+<span id="more"></span>
+<p>首先，在.Net开发环境中，DLL有两种，分别是托管DLL和非托管DLL。我们可以简单理解为，托管DLL就是在.Net环境生成的DLL文件，而非托管DLL是不在.Net环境生成的DLL文件。更详细的区别可以看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mmbbflyer/p/7799928.html">这</a>。</p>
+<h3 id="ILMerge"><a href="#ILMerge" class="headerlink" title="ILMerge"></a>ILMerge</h3><p>ILMerge是巨硬官方推出的，用于在生成项目时合并DLL到exe的工具，但很可惜，他只支持合并托管的DLL。</p>
+<p>当时我先编译出了一个非托管的DLL，发现存在上述问题。我又改写编译了一个托管版的，虽然能够直接通过添加引用导入该DLL，也能够在方法查看器中看到其中的所有方法，但ILMerge仍然认为这是一个非托管DLL。</p>
+<p>我觉得ILMerge不怎么好用，于是便开始寻找其他工具。</p>
+<h3 id="Costura-Fody"><a href="#Costura-Fody" class="headerlink" title="Costura.Fody"></a>Costura.Fody</h3><p><a target="_blank" rel="noopener" href="https://github.com/Fody/Costura">GitHub地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nuget.org/packages/Costura.Fody/.">Nuget地址</a></p>
+<p>在Nuget安装Costura.Fody后，Fody会做为依赖一同被添加进来，我在VS2015环境下，使用最新版本会遇到兼容性错误，所以使用旧版本VS需要手动降级。</p>
+<p>安装完需要手动添加配置文件</p>
+<p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png" alt="image-20210821201251800"></p>
+<p>配置文件内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Weavers</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Costura</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">IncludeAssemblies</span>&gt;</span></span><br><span class="line">        	...（此处填入托管DLL，名称参考引用）</span><br><span class="line">        <span class="tag">&lt;/<span class="name">IncludeAssemblies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Costura</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Weavers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>非托管DLL需要放到固定名称的文件夹中，且32位与64位需要分别放置，Costura.Fody会自动将这两个文件夹中的内容合并到exe中。</p>
+<p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201616376.png" alt="image-20210821201616376"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-08-17T13:34:03+08:00"
-              content="2021-08-17">
-          08-17
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/08/17/%E4%BC%BD%E7%BD%97%E7%93%A6%E5%9F%9F/" itemprop="url">
-            <span itemprop="name">伽罗瓦域</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/17/%E4%BC%BD%E7%BD%97%E7%93%A6%E5%9F%9F/" rel="prev" title="伽罗瓦域">
+      <i class="fa fa-chevron-left"></i> 伽罗瓦域
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -236,6 +297,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ILMerge"><span class="nav-number">1.</span> <span class="nav-text">ILMerge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Costura-Fody"><span class="nav-number">2.</span> <span class="nav-text">Costura.Fody</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
