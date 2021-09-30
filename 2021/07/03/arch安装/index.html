@@ -28,7 +28,7 @@
 <meta property="og:description" content="ARCH安装避坑(ARCH入坑指南)镜像一般选择最新版的iso镜像即可，本篇文章基于20年9月的镜像，关于制作镜像盘，推荐使用ventoy，虽然有些bug，但对于仅有一个u盘的我来说，免去了我再买一个u盘的需求。 BIOS确保是UEFI,并关闭secure boot">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-07-03T02:57:42.000Z">
-<meta property="article:modified_time" content="2021-09-11T05:52:13.901Z">
+<meta property="article:modified_time" content="2021-09-30T02:55:58.132Z">
 <meta property="article:author" content="Jens">
 <meta property="article:tag" content="archlinux">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-11 13:52:13" itemprop="dateModified" datetime="2021-09-11T13:52:13+08:00">2021-09-11</time>
+                <time title="Modified: 2021-09-30 10:55:58" itemprop="dateModified" datetime="2021-09-30T10:55:58+08:00">2021-09-30</time>
               </span>
 
           
@@ -215,7 +215,7 @@
 <p>然后使用<code>cat /mnt/etc/fstab</code>命令检查以下文件是否正确（每个分区占一行）</p>
 <h3 id="进入到安装的系统"><a href="#进入到安装的系统" class="headerlink" title="进入到安装的系统"></a><strong>进入到安装的系统</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
 <h3 id="安装文本编辑器"><a href="#安装文本编辑器" class="headerlink" title="安装文本编辑器"></a><strong>安装文本编辑器</strong></h3><p>现在的新系统连默认的文本编辑器<code>nano</code>都没有了，所以需要自己手动安装一个，不然后面的一些配置无法实现，所以我选择最强的<code>vim</code>：(建议直接上neovim)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S neovimln -s /usr/bin/nvim /usr/bin/vi #软链接，你的vi何必是vi</span><br><span class="line">ln -s /usr/bin/nvim /usr/bin/vim</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S neovim</span><br><span class="line">ln -s /usr/bin/nvim /usr/bin/vi #软链接，你的vi何必是vi</span><br><span class="line">ln -s /usr/bin/nvim /usr/bin/vim</span><br></pre></td></tr></table></figure>
 <h3 id="时区"><a href="#时区" class="headerlink" title="时区"></a><strong>时区</strong></h3><p>使用下面的命令设置时区：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</span><br></pre></td></tr></table></figure>
 <p>然后使用<code>hwclock</code>生成<code>/etc/adjtime</code>文件：</p>
