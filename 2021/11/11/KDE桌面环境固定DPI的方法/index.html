@@ -20,25 +20,20 @@
     var CONFIG = {"hostname":"jenscc.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。">
+  <meta name="description" content="在2021.11.10日，xorg-server 21.1.1-2 更新进入 [extra] , 一项用户可见的变化是修正了自动检测屏幕DPI相关的逻辑，原本部分显示器不能正确报告 DPI 的情况下使用默认 96 DPI，修正后会默认检测并使用正确的显示器 DPI 了。此次变更的可见效果之一是如果没有设置过 DPI 可能导致在一部分较高 DPI 的硬件上显示 GUI 组件比原本更大。 因为Wayl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#与DLL">
-<meta property="og:url" content="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/index.html">
+<meta property="og:title" content="KDE桌面环境(Xorg)固定DPI的方法">
+<meta property="og:url" content="https://jenscc.me/2021/11/11/KDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%9B%BA%E5%AE%9ADPI%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Jens的博客">
-<meta property="og:description" content="在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。">
+<meta property="og:description" content="在2021.11.10日，xorg-server 21.1.1-2 更新进入 [extra] , 一项用户可见的变化是修正了自动检测屏幕DPI相关的逻辑，原本部分显示器不能正确报告 DPI 的情况下使用默认 96 DPI，修正后会默认检测并使用正确的显示器 DPI 了。此次变更的可见效果之一是如果没有设置过 DPI 可能导致在一部分较高 DPI 的硬件上显示 GUI 组件比原本更大。 因为Wayl">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png">
-<meta property="og:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201616376.png">
-<meta property="article:published_time" content="2021-08-21T10:49:25.000Z">
-<meta property="article:modified_time" content="2021-08-23T06:26:02.957Z">
+<meta property="article:published_time" content="2021-11-11T14:27:08.000Z">
+<meta property="article:modified_time" content="2021-11-11T15:01:02.444Z">
 <meta property="article:author" content="Jens">
-<meta property="article:tag" content="C#">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="开发">
+<meta property="article:tag" content="Bug修复">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png">
 
-<link rel="canonical" href="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/">
+<link rel="canonical" href="https://jenscc.me/2021/11/11/KDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%9B%BA%E5%AE%9ADPI%E7%9A%84%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -51,7 +46,7 @@
   };
 </script>
 
-  <title>C#与DLL | Jens的博客</title>
+  <title>KDE桌面环境(Xorg)固定DPI的方法 | Jens的博客</title>
   
 
 
@@ -156,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://jenscc.me/2021/08/21/C-%E4%B8%8EDLL/">
+    <link itemprop="mainEntityOfPage" href="https://jenscc.me/2021/11/11/KDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%9B%BA%E5%AE%9ADPI%E7%9A%84%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/assets/img/mai.jpg">
@@ -169,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C#与DLL
+          KDE桌面环境(Xorg)固定DPI的方法
         </h1>
 
         <div class="post-meta">
@@ -178,16 +173,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-08-21 18:49:25" itemprop="dateCreated datePublished" datetime="2021-08-21T18:49:25+08:00">2021-08-21</time>
+              <time title="Created: 2021-11-11 22:27:08 / Modified: 23:01:02" itemprop="dateCreated datePublished" datetime="2021-11-11T22:27:08+08:00">2021-11-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-23 14:26:02" itemprop="dateModified" datetime="2021-08-23T14:26:02+08:00">2021-08-23</time>
-              </span>
 
           
 
@@ -200,21 +189,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在做C#开发时碰到了调用C++ DLL的需求，在C#中使用DLL并不复杂，但当时比较麻烦的需求是要将整个WinForm项目打包成一个可执行的exe文件。</p>
-<span id="more"></span>
-<p>首先，在.Net开发环境中，DLL有两种，分别是托管DLL和非托管DLL。我们可以简单理解为，托管DLL就是在.Net环境生成的DLL文件，而非托管DLL是不在.Net环境生成的DLL文件。更详细的区别可以看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mmbbflyer/p/7799928.html">这</a>。</p>
-<h3 id="ILMerge"><a href="#ILMerge" class="headerlink" title="ILMerge"></a>ILMerge</h3><p>ILMerge是巨硬官方推出的，用于在生成项目时合并DLL到exe的工具，但很可惜，他只支持合并托管的DLL。</p>
-<p>当时我先编译出了一个非托管的DLL，发现存在上述问题。我又改写编译了一个托管版的，虽然能够直接通过添加引用导入该DLL，也能够在方法查看器中看到其中的所有方法，但ILMerge仍然认为这是一个非托管DLL。</p>
-<p>我觉得ILMerge不怎么好用，于是便开始寻找其他工具。</p>
-<h3 id="Costura-Fody"><a href="#Costura-Fody" class="headerlink" title="Costura.Fody"></a>Costura.Fody</h3><p><a target="_blank" rel="noopener" href="https://github.com/Fody/Costura">GitHub地址</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.nuget.org/packages/Costura.Fody/.">Nuget地址</a></p>
-<p>在Nuget安装Costura.Fody后，Fody会做为依赖一同被添加进来，我在VS2015环境下，使用最新版本会遇到兼容性错误，所以使用旧版本VS需要手动降级。</p>
-<p>安装完需要手动添加配置文件</p>
-<p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201251800.png" alt="image-20210821201251800"></p>
-<p>配置文件内容</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Weavers</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Costura</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">IncludeAssemblies</span>&gt;</span></span><br><span class="line">        	...（此处填入托管DLL，名称参考引用）</span><br><span class="line">        <span class="tag">&lt;/<span class="name">IncludeAssemblies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Costura</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Weavers</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>非托管DLL需要放到固定名称的文件夹中，且32位与64位需要分别放置，Costura.Fody会自动将这两个文件夹中的内容合并到exe中。</p>
-<p><img src="https://gitee.com/jenscc/picgo/raw/master/img/image-20210821201616376.png" alt="image-20210821201616376"></p>
+        <p>在2021.11.10日，xorg-server 21.1.1-2 更新进入 [extra] , 一项用户可见的变化是修正了自动检测屏幕DPI相关的逻辑，原本部分显示器不能正确报告 DPI 的情况下使用默认 96 DPI，修正后会默认检测并使用正确的显示器 DPI 了。此次变更的可见效果之一是如果没有设置过 DPI 可能导致在一部分较高 DPI 的硬件上显示 GUI 组件比原本更大。</p>
+<p>因为Wayland/XWayland还有许多问题存在，而我也懒得去为应用程序的兼容性作调整，所以一直用着Xorg，而且没有配置过DPI，也没有对Xorg做过任何配置，所以我整个图形化环境都受到了这次更新的影响，包括sddm和KDE。</p>
+<h4 id="为sddm配置默认DPI"><a href="#为sddm配置默认DPI" class="headerlink" title="为sddm配置默认DPI"></a>为sddm配置默认DPI</h4><p>首先，为sddm启动Xorg的默认DPI到96，如果你没有<code>/etc/sddm.conf</code>这个文件，那么先执行以下命令，生成示例配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sddm --example-config | sudo tee /etc/sddm.conf</span><br></pre></td></tr></table></figure>
+<p>然后在<code>[X11]</code>的<code>ServerArguments</code>增加配置<code>-dpi 96</code>，下面是我的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[X11]</span><br><span class="line">....</span><br><span class="line">ServerArguments=-nolisten tcp -dpi 96</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<h4 id="为图形化用户配置默认DPI"><a href="#为图形化用户配置默认DPI" class="headerlink" title="为图形化用户配置默认DPI"></a>为图形化用户配置默认DPI</h4><p>修改<code>~/.Xresources</code>文件，若不存在则新建一份，增加下方的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xft.dpi: 96</span><br></pre></td></tr></table></figure>
+<p>在我个人的ArchLinux上，经过这两项配置，便能恢复以前的缩放率了。</p>
 
     </div>
 
@@ -224,9 +207,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/C/" rel="tag"># C#</a>
-              <a href="/tags/C/" rel="tag"># C++</a>
-              <a href="/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+              <a href="/tags/Bug%E4%BF%AE%E5%A4%8D/" rel="tag"># Bug修复</a>
           </div>
 
         
@@ -235,13 +216,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/17/%E4%BC%BD%E7%BD%97%E7%93%A6%E5%9F%9F/" rel="prev" title="伽罗瓦域">
-      <i class="fa fa-chevron-left"></i> 伽罗瓦域
+    <a href="/2021/08/21/C-%E4%B8%8EDLL/" rel="prev" title="C#与DLL">
+      <i class="fa fa-chevron-left"></i> C#与DLL
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/11/11/KDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%9B%BA%E5%AE%9ADPI%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="KDE桌面环境(Xorg)固定DPI的方法">
-      KDE桌面环境(Xorg)固定DPI的方法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -300,7 +278,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ILMerge"><span class="nav-number">1.</span> <span class="nav-text">ILMerge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Costura-Fody"><span class="nav-number">2.</span> <span class="nav-text">Costura.Fody</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BAsddm%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4DPI"><span class="nav-number">1.</span> <span class="nav-text">为sddm配置默认DPI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4DPI"><span class="nav-number">2.</span> <span class="nav-text">为图形化用户配置默认DPI</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
