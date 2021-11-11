@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-11-11 22:27:08 / Modified: 23:01:02" itemprop="dateCreated datePublished" datetime="2021-11-11T22:27:08+08:00">2021-11-11</time>
+              <time title="Created: 2021-11-11 22:27:08 / Modified: 23:03:01" itemprop="dateCreated datePublished" datetime="2021-11-11T22:27:08+08:00">2021-11-11</time>
             </span>
 
           
@@ -185,15 +185,14 @@
 
       
           <p>在2021.11.10日，xorg-server 21.1.1-2 更新进入 [extra] , 一项用户可见的变化是修正了自动检测屏幕DPI相关的逻辑，原本部分显示器不能正确报告 DPI 的情况下使用默认 96 DPI，修正后会默认检测并使用正确的显示器 DPI 了。此次变更的可见效果之一是如果没有设置过 DPI 可能导致在一部分较高 DPI 的硬件上显示 GUI 组件比原本更大。</p>
-<p>因为Wayland/XWayland还有许多问题存在，而我也懒得去为应用程序的兼容性作调整，所以一直用着Xorg，而且没有配置过DPI，也没有对Xorg做过任何配置，所以我整个图形化环境都受到了这次更新的影响，包括sddm和KDE。</p>
-<h4 id="为sddm配置默认DPI"><a href="#为sddm配置默认DPI" class="headerlink" title="为sddm配置默认DPI"></a>为sddm配置默认DPI</h4><p>首先，为sddm启动Xorg的默认DPI到96，如果你没有<code>/etc/sddm.conf</code>这个文件，那么先执行以下命令，生成示例配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sddm --example-config | sudo tee /etc/sddm.conf</span><br></pre></td></tr></table></figure>
-<p>然后在<code>[X11]</code>的<code>ServerArguments</code>增加配置<code>-dpi 96</code>，下面是我的配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[X11]</span><br><span class="line">....</span><br><span class="line">ServerArguments=-nolisten tcp -dpi 96</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-<h4 id="为图形化用户配置默认DPI"><a href="#为图形化用户配置默认DPI" class="headerlink" title="为图形化用户配置默认DPI"></a>为图形化用户配置默认DPI</h4><p>修改<code>~/.Xresources</code>文件，若不存在则新建一份，增加下方的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xft.dpi: 96</span><br></pre></td></tr></table></figure>
-<p>在我个人的ArchLinux上，经过这两项配置，便能恢复以前的缩放率了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/11/KDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E5%9B%BA%E5%AE%9ADPI%E7%9A%84%E6%96%B9%E6%B3%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
