@@ -24,7 +24,7 @@
 <meta property="og:description" content="ARCH安装避坑(ARCH入坑指南)镜像一般选择最新版的iso镜像即可，本篇文章基于20年9月的镜像，关于制作镜像盘，推荐使用ventoy，虽然有些bug，但对于仅有一个u盘的我来说，免去了我再买一个u盘的需求。 BIOS确保是UEFI,并关闭secure boot">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-03T02:57:42.000Z">
-<meta property="article:modified_time" content="2025-02-11T10:06:50.204Z">
+<meta property="article:modified_time" content="2025-02-12T12:37:07.557Z">
 <meta property="article:author" content="Jens">
 <meta property="article:tag" content="archlinux">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,7 +207,7 @@
         
         
         
-          11 分钟
+          10 分钟
         
       </span>
     
@@ -249,7 +249,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年2月11日 晚上
+                    本文最后更新于：2025年2月12日 晚上
                   
                 
               </p>
@@ -271,8 +271,7 @@
 <h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkfs.fat -F32 /dev/nvme0n1p1 # UEFI引导分区<br>mkfs.xfs /dev/nvme0n1p2 # 引导和交换分区外的其他分区，mkfs.btrfs可以建立btrfs文件格式分区<br>mkswap /dev/nvme0n1p3 # 交换分区<br>swapon /dev/nvme0n1p3 # 开启交换分区<br></code></pre></td></tr></table></figure>
 <h2 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">monut /dev/nvme0n1p2 /mnt # 首先挂载主分区<br>mkdir /mnt/boot<br>mount /dev/nvme0n1p1 /mnt/boot # 挂载引导分区<br></code></pre></td></tr></table></figure>
 <h2 id="运行安装脚本"><a href="#运行安装脚本" class="headerlink" title="运行安装脚本"></a>运行安装脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pacstrap /mnt base linux linux-firmware<br></code></pre></td></tr></table></figure>
-<p>在live环境中使用<code>reflector</code>进行镜像的管理，貌似你一连接网络，live系统会自动执行reflector命令来帮你选择镜像源，默认的是根据下载速率进行排序，所以我们应该可以跳过修改镜像源，如果有问题，那么</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim /etc/pacman.d/mirrorlist # 镜像源<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/pacman.d/mirrorlist</span><br>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch<br><br>vim /etc/resolv.conf # DNS<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/resolv.conf</span><br>nameserver 114.114.114.114<br></code></pre></td></tr></table></figure>
+<p>在live环境中使用<code>reflector</code>进行镜像的管理，貌似你一连接网络，live系统会自动执行reflector命令来帮你选择镜像源，默认的是根据下载速率进行排序。</p>
 <h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><h3 id="生成fstab文件"><a href="#生成fstab文件" class="headerlink" title="生成fstab文件"></a><strong>生成fstab文件</strong></h3><p>用以下命令生成<code>fstab</code>文件，其中<code>-U</code>选项用来设置UUID：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
 <p>然后使用</p>
